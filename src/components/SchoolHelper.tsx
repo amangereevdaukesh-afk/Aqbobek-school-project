@@ -60,7 +60,6 @@ export function SchoolHelper({ isOpen, onClose, theme, profile }: SchoolHelperPr
         systemInstruction = "Ты — методист и консультант школы 'AQBOBEK Lyceum'. Твоя задача — помогать учителям и администрации с учебными планами, методиками преподавания и организацией учебного процесса. Отвечай профессионально, дружелюбно, используй эмодзи и общайся на русском языке. Не называй себя искусственным интеллектом, веди себя естественно.";
       }
       
-      // We send the full history for context
       const history = messages.map(m => ({
         role: m.role,
         parts: [{ text: m.text }]
@@ -99,7 +98,6 @@ export function SchoolHelper({ isOpen, onClose, theme, profile }: SchoolHelperPr
             theme === 'dark' ? "bg-gray-900 border-white/10 text-white" : "bg-white border-gray-200 text-gray-900"
           )}
         >
-          {/* Header */}
           <div className="p-6 border-b border-white/10 flex items-center justify-between bg-purple-500 text-white">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-white/20 rounded-xl">
@@ -118,7 +116,6 @@ export function SchoolHelper({ isOpen, onClose, theme, profile }: SchoolHelperPr
             </button>
           </div>
 
-          {/* Messages */}
           <div 
             ref={scrollRef}
             className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth"
@@ -165,7 +162,6 @@ export function SchoolHelper({ isOpen, onClose, theme, profile }: SchoolHelperPr
             )}
           </div>
 
-          {/* Input */}
           <div className="p-6 border-t border-white/10">
             <div className="relative">
               <input 

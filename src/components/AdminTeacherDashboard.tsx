@@ -22,9 +22,7 @@ interface AdminTeacherDashboardProps {
 }
 
 export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboardProps) {
-  // Функция генерации рандомных оценок для ученика
   const generateRandomGrades = (seed: string) => {
-    // Используем seed для детерминированной, но разной генерации
     const hash = seed.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
     return {
       q1: Math.floor(((hash * 13) % 41) + 60),
@@ -34,7 +32,6 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
     };
   };
 
-  // Моковые данные учеников по классам (только имена)
   const STUDENT_NAMES_BY_CLASS: Record<string, string[]> = {
     '11 "А"': ['Азамат Нурланов', 'Айя Смагулова', 'Берик Касымов', 'Мадина Ерасыл', 'Арман Идрисов', 'Даурен Жумабеков', 'Елена Ким'],
     '11 "Б"': ['Динара Алиева', 'Ержан Сабитов', 'Гульназ Омарова', 'Тимур Бекмамбетов', 'Асель Курмангалиева', 'Игорь Пак', 'Марат Оспанов'],
@@ -44,7 +41,6 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
   const [selectedClass, setSelectedClass] = useState('11 "А"');
   const [activeTab, setActiveTab] = useState('Физика');
 
-  // Генерация данных студентов на лету на основе класса и предмета
   const getStudentsForContext = (className: string, subject: string) => {
     const names = STUDENT_NAMES_BY_CLASS[className] || [];
     return names.map((name, index) => ({
@@ -59,7 +55,6 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
   const [searchQuery, setSearchQuery] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
-  // Обновление учеников при смене класса или предмета
   const handleClassChange = (className: string) => {
     setSelectedClass(className);
     setStudents(getStudentsForContext(className, activeTab));
@@ -70,19 +65,16 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
     setStudents(getStudentsForContext(selectedClass, subject));
   };
 
-  // Поиск учеников
   const filteredStudents = students.filter(s => 
     s.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Функция расчета итоговой оценки
   const calculateFinal = (s: any) => {
     const grades = [s.q1, s.q2, s.q3, s.q4].filter(g => g > 0);
     if (grades.length === 0) return 0;
     return Math.round(grades.reduce((a, b) => a + b) / grades.length);
   };
 
-  // Обработчик изменения оценки вручную
   const handleGradeChange = (id: number, quarter: string, value: string) => {
     const val = value === '' ? 0 : parseInt(value);
     if (val < 0 || val > 100) return;
@@ -103,7 +95,6 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
     }, 1000);
   };
 
-  // ФУНКЦИЯ СОХРАНЕНИЯ В PDF
   const exportToPDF = () => {
     const doc = new jsPDF();
 
@@ -142,7 +133,6 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
-      {/* Top Navbar */}
       <nav className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-50 shadow-sm">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-2.5">
@@ -249,7 +239,6 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
       </nav>
 
       <main className="flex-1 p-8 max-w-7xl mx-auto w-full space-y-8">
-        {/* Шапка */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-200 pb-6">
           <div>
             <h1 className="text-3xl font-black text-indigo-900 tracking-tight">Панель учителя</h1>
@@ -268,7 +257,6 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
           </div>
         </div>
 
-        {/* Вкладки предметов */}
         <div className="flex gap-3 overflow-x-auto pb-2">
           {['Физика', 'Математика', 'История КЗ', 'Информатика', 'Английский'].map(subject => (
             <button
@@ -286,7 +274,6 @@ export function AdminTeacherDashboard({ profile, onLogout }: AdminTeacherDashboa
           ))}
         </div>
 
-        {/* Таблица */}
         <div className="overflow-hidden rounded-[32px] bg-white shadow-2xl shadow-slate-200/50 border border-slate-200">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">

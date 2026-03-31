@@ -147,7 +147,6 @@ export function Diary({ theme = 'dark', profile }: DiaryProps) {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
           <h1 className="text-5xl font-black tracking-tighter uppercase italic">Электронный дневник</h1>
@@ -209,7 +208,6 @@ export function Diary({ theme = 'dark', profile }: DiaryProps) {
         </div>
       </div>
 
-      {/* Diary Grid */}
       <div className={cn(
         "border rounded-[32px] overflow-hidden shadow-2xl transition-colors duration-500 relative min-h-[400px]",
         theme === 'dark' ? "bg-gray-900 border-white/5" : "bg-white border-gray-100 shadow-gray-200/50"
@@ -337,7 +335,6 @@ export function Diary({ theme = 'dark', profile }: DiaryProps) {
                                 )}>
                                   {grade}
                                 </span>
-                                {/* Grade Tooltip */}
                                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-black border border-white/10 rounded-lg text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover/grade:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10 text-white">
                                   {grade === 5 ? 'Отлично' : grade === 4 ? 'Хорошо' : 'Удовл.'}
                                 </div>
@@ -364,7 +361,6 @@ export function Diary({ theme = 'dark', profile }: DiaryProps) {
                           )}>
                             <MessageSquare className="w-5 h-5" />
                           </button>
-                          {/* Comment Tooltip */}
                           <div className={cn(
                             "absolute bottom-full right-0 mb-3 w-64 p-4 border rounded-2xl shadow-2xl opacity-0 group-hover/comment:opacity-100 transition-all pointer-events-none z-20 translate-y-2 group-hover/comment:translate-y-0",
                             theme === 'dark' ? "bg-gray-950 border-white/10" : "bg-white border-gray-200"
@@ -461,7 +457,6 @@ export function Diary({ theme = 'dark', profile }: DiaryProps) {
         </div>
       </div>
 
-      {/* Footer Info */}
       <div className="flex justify-between items-center px-4">
         <div className="flex items-center gap-2 text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">
           <RefreshCw className="w-3 h-3 animate-spin-slow" />

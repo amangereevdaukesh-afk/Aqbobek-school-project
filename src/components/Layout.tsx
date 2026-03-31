@@ -38,7 +38,6 @@ export function Layout({ children, profile, activeTab, setActiveTab, onLogout, t
       "min-h-screen flex overflow-hidden transition-colors duration-500",
       theme === 'dark' ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
     )}>
-      {/* Sidebar */}
       <aside className={cn(
         "w-72 border-r flex flex-col transition-colors duration-500",
         theme === 'dark' ? "bg-gray-900 border-white/10" : "bg-white border-gray-200"
@@ -71,7 +70,6 @@ export function Layout({ children, profile, activeTab, setActiveTab, onLogout, t
           ))}
         </nav>
 
-        {/* Profile Card */}
         <div className={cn(
           "p-6 mt-auto border-t space-y-4",
           theme === 'dark' ? "border-white/10" : "border-gray-200"
@@ -115,9 +113,7 @@ export function Layout({ children, profile, activeTab, setActiveTab, onLogout, t
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 overflow-y-auto relative">
-        {/* Background Gradients */}
         <div className={cn(
           "absolute top-0 right-0 w-[500px] h-[500px] blur-[120px] rounded-full -z-10 opacity-20",
           theme === 'dark' ? "bg-purple-500/20" : "bg-purple-500/10"

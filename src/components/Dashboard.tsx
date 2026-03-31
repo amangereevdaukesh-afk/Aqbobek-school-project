@@ -52,7 +52,6 @@ export function Dashboard({ profile, theme = 'dark' }: DashboardProps) {
 
   return (
     <div className="space-y-8 pb-12">
-      {/* Header */}
       <div className="flex justify-between items-end">
         <div>
           <h1 className="text-5xl font-black tracking-tighter uppercase italic">С возвращением, {profile.name.split(' ')[0]}!</h1>
@@ -69,7 +68,6 @@ export function Dashboard({ profile, theme = 'dark' }: DashboardProps) {
         </div>
       </div>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
           { label: 'Средний балл', value: avgGrade, icon: TrendingUp, color: 'text-blue-500', bg: 'bg-blue-500/10' },
@@ -102,7 +100,6 @@ export function Dashboard({ profile, theme = 'dark' }: DashboardProps) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Main Chart */}
         <div className={cn(
           "lg:col-span-2 border rounded-[32px] p-8 shadow-sm",
           theme === 'dark' ? "bg-gray-900 border-white/5" : "bg-white border-gray-100 shadow-gray-200/50"
@@ -166,7 +163,6 @@ export function Dashboard({ profile, theme = 'dark' }: DashboardProps) {
           </div>
         </div>
 
-        {/* Recent News */}
         <div className={cn(
           "border rounded-[32px] p-8 shadow-sm",
           theme === 'dark' ? "bg-gray-900 border-white/5" : "bg-white border-gray-100 shadow-gray-200/50"

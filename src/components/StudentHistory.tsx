@@ -36,7 +36,6 @@ export function StudentHistory({ profile, theme = 'dark' }: StudentHistoryProps)
 
   return (
     <div className="space-y-10 pb-20">
-      {/* Hero Section */}
       <div className={cn(
         "relative h-[400px] rounded-[40px] overflow-hidden group shadow-2xl transition-colors duration-500",
         theme === 'dark' ? "bg-gray-900" : "bg-white"
@@ -63,7 +62,6 @@ export function StudentHistory({ profile, theme = 'dark' }: StudentHistoryProps)
         </div>
       </div>
 
-      {/* Filter Bar */}
       <div className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
         <button
           onClick={() => setSelectedSubject(null)}
@@ -92,7 +90,6 @@ export function StudentHistory({ profile, theme = 'dark' }: StudentHistoryProps)
         ))}
       </div>
 
-      {/* Netflix Style Grid */}
       <div className="space-y-12">
         <section>
           <div className="flex items-center justify-between mb-8">
@@ -144,7 +141,6 @@ export function StudentHistory({ profile, theme = 'dark' }: StudentHistoryProps)
                   </div>
                 </div>
 
-                {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-md">
                   <div className="text-center p-6 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
                     <Star className="w-12 h-12 text-yellow-500 mx-auto mb-4 drop-shadow-lg" />

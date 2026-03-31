@@ -133,7 +133,6 @@ export function AdminDashboard({ profile, onLogout, theme, toggleTheme }: AdminD
       "min-h-screen flex",
       theme === 'dark' ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
     )}>
-      {/* Sidebar */}
       <aside className={cn(
         "w-72 border-r flex flex-col",
         theme === 'dark' ? "bg-gray-900 border-white/5" : "bg-white border-gray-200"
@@ -175,9 +174,7 @@ export function AdminDashboard({ profile, onLogout, theme, toggleTheme }: AdminD
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
         <header className={cn(
           "h-20 border-b flex items-center justify-between px-10",
           theme === 'dark' ? "bg-gray-900 border-white/5" : "bg-white border-gray-200"
@@ -208,7 +205,6 @@ export function AdminDashboard({ profile, onLogout, theme, toggleTheme }: AdminD
         <div className="flex-1 overflow-y-auto p-10">
           {activeTab === 'overview' && (
             <div className="space-y-10">
-              {/* Stats Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {stats.map((stat, i) => (
                   <motion.div
@@ -233,7 +229,6 @@ export function AdminDashboard({ profile, onLogout, theme, toggleTheme }: AdminD
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Class Performance */}
                 <div className={cn(
                   "lg:col-span-2 rounded-[32px] p-8 border",
                   theme === 'dark' ? "bg-gray-900 border-white/5" : "bg-white border-gray-200 shadow-sm"
@@ -276,7 +271,6 @@ export function AdminDashboard({ profile, onLogout, theme, toggleTheme }: AdminD
                   </div>
                 </div>
 
-                {/* Top Students */}
                 <div className={cn(
                   "rounded-[32px] p-8 border",
                   theme === 'dark' ? "bg-gray-900 border-white/5" : "bg-white border-gray-200 shadow-sm"

@@ -38,7 +38,6 @@ export function KioskMode() {
 
   return (
     <div className="h-full bg-[#0D0D0D] overflow-hidden relative flex flex-col">
-      {/* Top Banner */}
       <div className="bg-orange-500 p-6 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <Megaphone className="w-10 h-10 text-black" />
@@ -55,7 +54,6 @@ export function KioskMode() {
         </div>
       </div>
 
-      {/* Main Content Area */}
       <div className="flex-1 flex items-center justify-center p-20">
         <AnimatePresence mode="wait">
           <motion.div
@@ -106,7 +104,6 @@ export function KioskMode() {
         </AnimatePresence>
       </div>
 
-      {/* Progress Bar */}
       <div className="h-4 bg-white/5">
         <motion.div 
           key={currentIndex}
@@ -117,7 +114,6 @@ export function KioskMode() {
         />
       </div>
 
-      {/* Footer Marquee */}
       <div className="bg-white/5 p-6 overflow-hidden">
         <div className="flex items-center gap-12 whitespace-nowrap animate-marquee">
           {[...Array(5)].map((_, i) => (

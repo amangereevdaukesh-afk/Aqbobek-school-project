@@ -1,6 +1,5 @@
 import { UserProfile, Grade, Attendance, News, UserRole, ClassPerformance, StudentTrend } from '../types';
 
-// Mock Auth State
 let currentUser: UserProfile | null = null;
 
 const STORAGE_KEYS = {
@@ -12,19 +11,16 @@ const STORAGE_KEYS = {
   CLASSES: 'aqbobek_classes'
 };
 
-// Helper to get data from localStorage
 const getLocal = <T>(key: string, defaultValue: T): T => {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : defaultValue;
 };
 
-// Helper to save data to localStorage
 const saveLocal = (key: string, data: any) => {
   localStorage.setItem(key, JSON.stringify(data));
 };
 
 export const dataService = {
-  // Auth
   getCurrentUser: (): UserProfile | null => {
     if (!currentUser) {
       currentUser = getLocal<UserProfile | null>(STORAGE_KEYS.USER, null);
@@ -53,7 +49,6 @@ export const dataService = {
     localStorage.removeItem(STORAGE_KEYS.USER);
   },
 
-  // Grades
   getGrades: (studentId: string): Grade[] => {
     return getLocal<Grade[]>(STORAGE_KEYS.GRADES, []);
   },
@@ -65,7 +60,6 @@ export const dataService = {
     return newGrade;
   },
 
-  // Attendance
   getAttendance: (studentId: string): Attendance[] => {
     return getLocal<Attendance[]>(STORAGE_KEYS.ATTENDANCE, []);
   },
@@ -77,7 +71,6 @@ export const dataService = {
     return newRecord;
   },
 
-  // News
   getNews: (): News[] => {
     return getLocal<News[]>(STORAGE_KEYS.NEWS, []);
   },
@@ -89,7 +82,6 @@ export const dataService = {
     return newItem;
   },
 
-  // Subscription simulation (simplified)
   subscribeToNews: (callback: (news: News[]) => void) => {
     const news = getLocal<News[]>(STORAGE_KEYS.NEWS, []);
     callback(news);
@@ -108,7 +100,6 @@ export const dataService = {
     return () => clearInterval(interval);
   },
 
-  // Admin Features
   getClassesPerformance: (): ClassPerformance[] => {
     const classes = ['11A', '11B', '10A', '10B', '9A', '9B', '9C'];
     return classes.map(id => ({
@@ -128,7 +119,6 @@ export const dataService = {
     ];
   },
 
-  // Teacher Features
   getStudentDynamics: (): StudentTrend[] => {
     return [
       {

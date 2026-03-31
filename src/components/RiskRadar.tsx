@@ -64,7 +64,6 @@ export function RiskRadar({ profile }: RiskRadarProps) {
 
   return (
     <div className="max-w-5xl mx-auto space-y-12 pb-20">
-      {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="space-y-4 text-center md:text-left">
           <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-full text-red-500 font-bold text-sm">
@@ -93,7 +92,6 @@ export function RiskRadar({ profile }: RiskRadarProps) {
           animate={{ opacity: 1, scale: 1 }}
           className="grid grid-cols-1 lg:grid-cols-3 gap-8"
         >
-          {/* Main Risk Gauge */}
           <div className={cn("lg:col-span-2 rounded-[48px] p-12 border flex flex-col items-center justify-center text-center", getRiskBg(risk.probability))}>
             <div className="relative w-64 h-64 mb-8">
               <svg className="w-full h-full transform -rotate-90">
@@ -132,7 +130,6 @@ export function RiskRadar({ profile }: RiskRadarProps) {
             </p>
           </div>
 
-          {/* Details Panel */}
           <div className="space-y-8">
             <div className="bg-[#0a0a0a] border border-white/5 rounded-[40px] p-8">
               <h4 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">

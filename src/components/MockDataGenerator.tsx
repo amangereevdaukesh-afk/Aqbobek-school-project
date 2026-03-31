@@ -12,7 +12,6 @@ export function MockDataGenerator({ profile }: { profile: UserProfile }) {
   const generateData = async () => {
     setLoading(true);
     try {
-      // 1. Create mock grades
       const subjects = ['Mathematics', 'Physics', 'Biology', 'English', 'History', 'Computer Science', 'Geography', 'Chemistry'];
       const types: ('exam' | 'homework' | 'quiz')[] = ['exam', 'homework', 'quiz'];
       
@@ -27,7 +26,6 @@ export function MockDataGenerator({ profile }: { profile: UserProfile }) {
         dataService.addGrade(grade);
       }
 
-      // 2. Create mock attendance
       for (let i = 0; i < 15; i++) {
         const att: Omit<Attendance, 'id'> = {
           studentId: profile.uid,
@@ -37,7 +35,6 @@ export function MockDataGenerator({ profile }: { profile: UserProfile }) {
         dataService.addAttendance(att);
       }
 
-      // 3. Create mock news
       const newsItems = [
         { title: 'Ежегодная научная ярмарка 2026', content: 'Присоединяйтесь к самому захватывающему событию года! Ученики представят свои инновационные проекты в главном зале.', summary: 'Научная ярмарка 2026: Инновации на выставке!' },
         { title: 'Открытие новой лаборатории робототехники', content: 'Мы с гордостью объявляем об открытии нашей современной лаборатории робототехники, оснащенной по последнему слову техники.', summary: 'Лаборатория робототехники открыта для учеников!' },

@@ -48,7 +48,6 @@ export function Mentor({ profile }: MentorProps) {
 
   return (
     <div className="max-w-4xl mx-auto space-y-10 pb-20">
-      {/* Header */}
       <div className="text-center space-y-4">
         <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 px-4 py-2 rounded-full text-orange-500 font-bold text-sm">
           <BrainCircuit className="w-4 h-4" />
@@ -60,7 +59,6 @@ export function Mentor({ profile }: MentorProps) {
         </p>
       </div>
 
-      {/* Mode Selector */}
       <div className="flex justify-center gap-4">
         <button
           onClick={() => setMode('soft')}
@@ -88,7 +86,6 @@ export function Mentor({ profile }: MentorProps) {
         </button>
       </div>
 
-      {/* Action Button */}
       <div className="flex justify-center">
         <button
           onClick={generateRecommendations}
@@ -100,7 +97,6 @@ export function Mentor({ profile }: MentorProps) {
         </button>
       </div>
 
-      {/* Recommendations List */}
       <div className="grid grid-cols-1 gap-6">
         <AnimatePresence mode="popLayout">
           {recommendations.map((rec, i) => (
