@@ -1,0 +1,72 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Fields: uid, email, displayName, role, class
+    //
+    // Collection: grades
+    // Fields: studentId, subject, quarter, value, updatedAt, updatedBy
+    //
+    // Collection: attendance
+    // Fields: studentId, date, status
+    //
+    // Collection: audit_logs
+    // Fields: action, performedBy, targetId, timestamp, details
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+        (request.auth.token.email == "amangereev.daukesh@gmail.com" && request.auth.token.email_verified == true)
+      );
+    }
+
+    function isTeacher() {
+      return isAuthenticated() && (
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'teacher' ||
+        isAdmin()
+      );
+    }
+
+    // User Profiles
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(userId) && request.resource.data.role == 'student';
+      allow update: if isAdmin() || (isOwner(userId) && request.resource.data.role == resource.data.role);
+    }
+
+    // Grades
+    match /grades/{gradeId} {
+      allow read: if isAuthenticated() && (isOwner(resource.data.studentId) || isTeacher());
+      allow create, update: if isTeacher();
+      allow delete: if isAdmin();
+    }
+
+    // Attendance
+    match /attendance/{attendanceId} {
+      allow read: if isAuthenticated() && (isOwner(resource.data.studentId) || isTeacher());
+      allow create, update: if isTeacher();
+      allow delete: if isAdmin();
+    }
+
+    // Audit Logs
+    match /audit_logs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAuthenticated();
+    }
+  }
+}
